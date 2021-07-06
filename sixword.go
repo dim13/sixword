@@ -17,7 +17,7 @@ func Encode(n uint64) string {
 }
 
 func Decode(s string) (uint64, bool) {
-	x, ok := parse(strings.Split(s, " "))
+	x, ok := parse(strings.Fields(s))
 	if !ok || len(x) != 6 {
 		return 0, false
 	}
