@@ -1,5 +1,13 @@
 package sixword
 
+func init() {
+	for i, v := range dict {
+		index[v] = i
+	}
+}
+
+var index = make(map[string]int)
+
 // RFC 2289 Appendix D
 var dict = []string{
 	"A", "ABE", "ACE", "ACT", "AD", "ADA", "ADD", "AGO",

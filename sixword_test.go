@@ -39,3 +39,15 @@ func TestSixWord(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkEncode(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Encode(0x9e876134d90499dd)
+	}
+}
+
+func BenchmarkDecode(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Decode("INCH SEA ANNE LONG AHEM TOUR")
+	}
+}
