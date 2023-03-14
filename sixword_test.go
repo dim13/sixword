@@ -51,3 +51,16 @@ func BenchmarkDecode(b *testing.B) {
 		Decode("INCH SEA ANNE LONG AHEM TOUR")
 	}
 }
+
+func FuzzSixWord(f *testing.F) {
+	f.Fuzz(func(t *testing.T, n uint64) {
+		s := Encode(n)
+		d, ok := Decode(s)
+		if !ok {
+			t.Errorf("%v not ok", n)
+		}
+		if n != d {
+			t.Errorf("want %v, got %v", n, d)
+		}
+	})
+}
