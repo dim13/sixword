@@ -1,15 +1,17 @@
 package main
 
 import (
+	"crypto/rand"
+	"encoding/binary"
 	"fmt"
-	"math/rand/v2"
 	"strings"
 
 	"github.com/dim13/sixword"
 )
 
 func main() {
-	n := rand.New(Source{}).Uint64()
+	var n uint64
+	binary.Read(rand.Reader, binary.BigEndian, &n)
 	s := sixword.Encode(n)
 	s = strings.ToLower(s)
 	s = strings.ReplaceAll(s, " ", "-")
