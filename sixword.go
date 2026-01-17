@@ -36,7 +36,7 @@ func Decode(s string) (uint64, bool) {
 
 func checksum(n uint64) uint64 {
 	var sum uint64
-	for i := 0; i < 32; i++ {
+	for i := range 32 {
 		sum += n >> (i << 1) & 3
 	}
 	return sum & 3
